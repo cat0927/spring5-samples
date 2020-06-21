@@ -17,6 +17,10 @@ import java.util.List;
 
 /**
  * Created by Tom on 2019/4/14.
+ * 完成对 AOP 配置的解析，
+ * 1、pointCutMatch 用来判断目标类是否符合切面类型，从而决定是否需要生成代理类。
+ * 2、getInterceptorsAndDynamicInterceptionAdvice
+ *
  */
 public class GPAdvisedSupport {
 
@@ -42,6 +46,13 @@ public class GPAdvisedSupport {
         return this.target;
     }
 
+    /**
+     *  主要根据 AOP 配置，将需要回调的方法封装成一个拦截器链并返回提供给外部获取。
+     * @param method
+     * @param targetClass
+     * @return
+     * @throws Exception
+     */
     public List<Object> getInterceptorsAndDynamicInterceptionAdvice(Method method, Class<?> targetClass) throws Exception{
         List<Object> cached = methodCache.get(method);
         if(cached == null){

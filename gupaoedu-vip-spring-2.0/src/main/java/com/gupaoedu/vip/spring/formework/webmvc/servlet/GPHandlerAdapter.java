@@ -75,7 +75,7 @@ public class GPHandlerAdapter {
         }
 
         Object result = handlerMapping.getMethod().invoke(handlerMapping.getController(),paramValues);
-        if(result == null || result instanceof Void){ return null; }
+        if(result == null) { return null; }
 
         boolean isModelAndView = handlerMapping.getMethod().getReturnType() == GPModelAndView.class;
         if(isModelAndView){
@@ -85,20 +85,17 @@ public class GPHandlerAdapter {
     }
 
     private Object caseStringValue(String value, Class<?> paramsType) {
-        if(String.class == paramsType){
+        if (String.class == paramsType) {
             return value;
         }
         //如果是int
-        if(Integer.class == paramsType){
+        if (Integer.class == paramsType) {
             return Integer.valueOf(value);
         }
-        else if(Double.class == paramsType){
+        else if (Double.class == paramsType) {
             return Double.valueOf(value);
-        }else {
-            if(value != null){
-                return value;
-            }
-            return null;
+        } else {
+            return value;
         }
         //如果还有double或者其他类型，继续加if
         //这时候，我们应该想到策略模式了

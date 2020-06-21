@@ -204,6 +204,11 @@ public class GPApplicationContext extends GPDefaultListableBeanFactory implement
         return instance;
     }
 
+    /**
+     * 生成对应代理。JDK、或CGLib
+     * @param config
+     * @return
+     */
     private GPAopProxy createProxy(GPAdvisedSupport config) {
 
         Class targetClass = config.getTargetClass();

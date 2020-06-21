@@ -31,7 +31,15 @@ public class GPJdkDynamicAopProxy implements  GPAopProxy,InvocationHandler{
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        /**
+         * 将每一个 JoinPoint 也就是被代理的方法，（Method）封装成一个拦截器，组合成一个拦截器链。
+         */
         List<Object> interceptorsAndDynamicMethodMatchers = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method,this.advised.getTargetClass());
+
+        /**
+         * 交给拦截器链 MethodInvocation # proceed() 方法
+         */
         GPMethodInvocation invocation = new GPMethodInvocation(proxy,this.advised.getTarget(),method,args,this.advised.getTargetClass(),interceptorsAndDynamicMethodMatchers);
         return invocation.proceed();
     }

@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 
 /**
  * Created by Tom on 2019/4/15.
+ * 前置通知
  */
 public class GPMethodBeforeAdviceInterceptor extends GPAbstractAspectAdvice implements GPAdvice,GPMethodInterceptor {
 

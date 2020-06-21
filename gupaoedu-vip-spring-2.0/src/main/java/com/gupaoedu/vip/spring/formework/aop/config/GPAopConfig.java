@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * Created by Tom on 2019/4/15.
+ * AOP 封装类
  */
 @Data
 public class GPAopConfig {

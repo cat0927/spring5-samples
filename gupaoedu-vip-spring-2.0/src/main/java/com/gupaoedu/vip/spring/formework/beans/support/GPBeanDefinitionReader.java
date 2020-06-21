@@ -12,6 +12,8 @@ import java.util.Properties;
 
 /**
  * Created by Tom.
+ *
+ * 对配置文件进行查找、读取、解析
  */
 public class GPBeanDefinitionReader {
 
@@ -29,7 +31,7 @@ public class GPBeanDefinitionReader {
             config.load(is);
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if(null != is){
                 try {
                     is.close();

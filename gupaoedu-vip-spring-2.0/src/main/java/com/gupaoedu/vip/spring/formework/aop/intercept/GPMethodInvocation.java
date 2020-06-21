@@ -37,6 +37,11 @@ public class GPMethodInvocation implements GPJoinPoint {
         this.interceptorsAndDynamicMethodMatchers = interceptorsAndDynamicMethodMatchers;
     }
 
+    /**
+     * 【 核心执行方法 】
+     * @return
+     * @throws Throwable
+     */
     public Object proceed() throws Throwable {
         //如果Interceptor执行完了，则执行joinPoint
         if (this.currentInterceptorIndex == this.interceptorsAndDynamicMethodMatchers.size() - 1) {
@@ -45,7 +50,7 @@ public class GPMethodInvocation implements GPJoinPoint {
 
         Object interceptorOrInterceptionAdvice =
                 this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
-        //如果要动态匹配joinPoint
+        //如果要动态匹配 joinPoint
         if (interceptorOrInterceptionAdvice instanceof GPMethodInterceptor) {
             GPMethodInterceptor mi =
                     (GPMethodInterceptor) interceptorOrInterceptionAdvice;

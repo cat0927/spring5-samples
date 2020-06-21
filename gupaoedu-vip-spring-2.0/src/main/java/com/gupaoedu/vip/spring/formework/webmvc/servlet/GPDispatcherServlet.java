@@ -199,6 +199,9 @@ public class GPDispatcherServlet extends HttpServlet {
 
             for (String beanName : beanNames) {
 
+                /*
+                 * 对外提供的方法，只有一个 getBean()
+                 */
                 Object controller = context.getBean(beanName);
 
                 Class<?> clazz = controller.getClass();
@@ -236,7 +239,7 @@ public class GPDispatcherServlet extends HttpServlet {
 
 
             }
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
 
